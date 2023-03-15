@@ -1,0 +1,7 @@
+server:
+  port: 403
+spring:
+  application:
+    name: permission
+  profiles:
+    active: dev
