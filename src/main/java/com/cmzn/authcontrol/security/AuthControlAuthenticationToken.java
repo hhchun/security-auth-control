@@ -1,12 +1,12 @@
-package com.cmzn.permission.security;
+package com.cmzn.authcontrol.security;
 
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 
 import java.util.Collection;
 
-public class PermissionAuthenticationToken extends AbstractAuthenticationToken {
-    public PermissionAuthenticationToken(Collection<? extends GrantedAuthority> authorities) {
+public class AuthControlAuthenticationToken extends AbstractAuthenticationToken {
+    public AuthControlAuthenticationToken(Collection<? extends GrantedAuthority> authorities) {
         super(authorities);
     }
 

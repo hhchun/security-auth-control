@@ -1,4 +1,4 @@
-package com.cmzn.permission.security;
+package com.cmzn.authcontrol.security;
 
 import com.sun.istack.internal.NotNull;
 import lombok.extern.slf4j.Slf4j;
@@ -15,16 +15,16 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Slf4j
-public class PermissionAuthenticationFilter extends BasicAuthenticationFilter {
+public class AuthControlAuthenticationFilter extends BasicAuthenticationFilter {
 
     private final AuthenticationFactory authenticationFactory;
 
-    public PermissionAuthenticationFilter(AuthenticationManager authenticationManager, AuthenticationFactory authenticationFactory) {
+    public AuthControlAuthenticationFilter(AuthenticationManager authenticationManager, AuthenticationFactory authenticationFactory) {
         super(authenticationManager);
         this.authenticationFactory = authenticationFactory;
     }
 
-    public PermissionAuthenticationFilter(AuthenticationManager authenticationManager, AuthenticationEntryPoint authenticationEntryPoint, AuthenticationFactory authenticationFactory) {
+    public AuthControlAuthenticationFilter(AuthenticationManager authenticationManager, AuthenticationEntryPoint authenticationEntryPoint, AuthenticationFactory authenticationFactory) {
         super(authenticationManager, authenticationEntryPoint);
         this.authenticationFactory = authenticationFactory;
     }

@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.cmzn.permission</groupId>
-    <artifactId>cmzn-permission</artifactId>
+    <groupId>com.cmzn.authcontrol</groupId>
+    <artifactId>cmzn-auth-control</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <dependencyManagement>
@@ -36,11 +36,6 @@
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
             <version>5.8.11</version>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
         <dependency>

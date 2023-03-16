@@ -1,6 +1,6 @@
-package com.cmzn.permission.config;
+package com.cmzn.authcontrol.config;
 
-import com.cmzn.permission.security.*;
+import com.cmzn.authcontrol.security.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
@@ -24,7 +24,7 @@ import javax.servlet.Filter;
 
 @Configuration
 @EnableWebSecurity
-public class PermissionWebSecurityConfigurer {
+public class AuthControlWebSecurityConfigurer {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http,
@@ -50,18 +50,18 @@ public class PermissionWebSecurityConfigurer {
 
     @Bean("authenticationFilter")
     public Filter authenticationFilter(AuthenticationConfiguration configuration, AuthenticationFactory authenticationFactory) throws Exception {
-        return new PermissionAuthenticationFilter(configuration.getAuthenticationManager(), authenticationFactory);
+        return new AuthControlAuthenticationFilter(configuration.getAuthenticationManager(), authenticationFactory);
     }
 
 
     @Bean
-    public AuthenticationFactory authenticationFactory(AbstractVisitorPermissionProvider visitorPermissionProvider) {
-        return new DefaultAuthenticationFactory(visitorPermissionProvider);
+    public AuthenticationFactory authenticationFactory(AbstractVisitorAuthProvider visitorAuthProvider) {
+        return new DefaultAuthenticationFactory(visitorAuthProvider);
     }
 
     @Bean
-    public FilterInvocationSecurityMetadataSource filterInvocationSecurityMetadataSource(AbstractTargetPermissionProvider targetPermissionProvider) {
-        return new PermissionFilterInvocationSecurityMetadataSource(targetPermissionProvider);
+    public FilterInvocationSecurityMetadataSource filterInvocationSecurityMetadataSource(AbstractTargetAuthProvider targetAuthProvider) {
+        return new AuthControlFilterInvocationSecurityMetadataSource(targetAuthProvider);
     }
 
     @Bean
@@ -71,16 +71,16 @@ public class PermissionWebSecurityConfigurer {
 
     @Bean
     public AuthenticationEntryPoint authenticationEntryPoint() {
-        return new PermissionAuthenticationEntryPoint();
+        return new AuthControlAuthenticationEntryPoint();
     }
 
     @Bean
     public AccessDeniedHandler accessDeniedHandler() {
-        return new PermissionAccessDeniedHandler();
+        return new AuthControlAccessDeniedHandler();
     }
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder builder) {
-        builder.authenticationProvider(new PermissionAuthenticationProvider());
+        builder.authenticationProvider(new AuthControlAuthenticationProvider());
     }
 }

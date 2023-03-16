@@ -1,4 +1,4 @@
-package com.cmzn.permission.security;
+package com.cmzn.authcontrol.security;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class PermissionAccessDeniedHandler implements AccessDeniedHandler {
+public class AuthControlAccessDeniedHandler implements AccessDeniedHandler {
     @Autowired
     @Qualifier("handlerExceptionResolver")
     private HandlerExceptionResolver resolver;

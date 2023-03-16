@@ -1,33 +1,32 @@
-package com.cmzn.permission.security;
+package com.cmzn.authcontrol.security;
 
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.access.SecurityConfig;
 import org.springframework.security.web.FilterInvocation;
 import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
-import org.springframework.util.AntPathMatcher;
 import org.springframework.util.CollectionUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Collection;
 import java.util.List;
 
-public class PermissionFilterInvocationSecurityMetadataSource implements FilterInvocationSecurityMetadataSource {
+public class AuthControlFilterInvocationSecurityMetadataSource implements FilterInvocationSecurityMetadataSource {
 
-    private PermissionProvider permissionProvider;
+    private AuthProvider authProvider;
 
 
-    public PermissionFilterInvocationSecurityMetadataSource(PermissionProvider permissionProvider) {
-        this.permissionProvider = permissionProvider;
+    public AuthControlFilterInvocationSecurityMetadataSource(AuthProvider authProvider) {
+        this.authProvider = authProvider;
     }
 
     @Override
     public Collection<ConfigAttribute> getAttributes(Object object) throws IllegalArgumentException {
         HttpServletRequest request = ((FilterInvocation) object).getRequest();
-        List<String> permissions = permissionProvider.getPermissions(request);
-        if (CollectionUtils.isEmpty(permissions)) {
+        List<String> auths = authProvider.getAuths(request);
+        if (CollectionUtils.isEmpty(auths)) {
             throw new IllegalArgumentException("[" + request.getRequestURI() + "]" + "没有配置访问权限");
         }
-        return SecurityConfig.createList(permissions.get(0));
+        return SecurityConfig.createList(auths.get(0));
     }
 
     @Override
@@ -40,7 +39,7 @@ public class PermissionFilterInvocationSecurityMetadataSource implements FilterI
         return FilterInvocation.class.isAssignableFrom(clazz);
     }
 
-    public void setPermissionProvider(PermissionProvider permissionProvider) {
-        this.permissionProvider = permissionProvider;
+    public void setAuthControlProvider(AuthProvider authProvider) {
+        this.authProvider = authProvider;
     }
 }

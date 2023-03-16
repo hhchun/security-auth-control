@@ -1,4 +1,4 @@
-package com.cmzn.permission.security;
+package com.cmzn.authcontrol.security;
 
 import org.springframework.security.core.Authentication;
 

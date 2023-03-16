@@ -1,4 +1,4 @@
-package com.cmzn.permission.security;
+package com.cmzn.authcontrol.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class PermissionAuthenticationEntryPoint implements AuthenticationEntryPoint {
+public class AuthControlAuthenticationEntryPoint implements AuthenticationEntryPoint {
     @Autowired
     @Qualifier("handlerExceptionResolver")
     private HandlerExceptionResolver resolver;
