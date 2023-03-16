@@ -43,7 +43,7 @@ public class AuthEntity implements Serializable {
 	/**
 	 * 权限描述
 	 */
-	private String desc;
+	private String des;
 	/**
 	 * 权限标识
 	 */

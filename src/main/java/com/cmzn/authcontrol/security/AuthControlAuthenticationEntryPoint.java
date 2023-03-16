@@ -18,7 +18,6 @@ public class AuthControlAuthenticationEntryPoint implements AuthenticationEntryP
 
     @Override
     public void commence(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
-        e.printStackTrace();
         resolver.resolveException(httpServletRequest, httpServletResponse, null, e);
     }
 }

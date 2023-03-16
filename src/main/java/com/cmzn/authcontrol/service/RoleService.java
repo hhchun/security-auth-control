@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import  com.cmzn.authcontrol.common.utils.PageResult;
 import com.cmzn.authcontrol.entity.domain.RoleEntity;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,5 +17,7 @@ import java.util.Map;
 public interface RoleService extends IService<RoleEntity> {
 
     PageResult<RoleEntity> queryPage(Map<String, Object> params);
+
+    List<RoleEntity> getAvailableRolesByUserId(Long userId);
 }
 

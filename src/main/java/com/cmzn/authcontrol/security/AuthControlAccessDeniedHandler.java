@@ -19,7 +19,6 @@ public class AuthControlAccessDeniedHandler implements AccessDeniedHandler {
 
     @Override
     public void handle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AccessDeniedException e) throws IOException, ServletException {
-        e.printStackTrace();
         resolver.resolveException(httpServletRequest, httpServletResponse, null, e);
     }
 }

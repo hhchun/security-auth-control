@@ -43,7 +43,7 @@ public class RoleEntity implements Serializable {
 	/**
 	 * 角色描述
 	 */
-	private String desc;
+	private String des;
 	/**
 	 * 角色标识
 	 */

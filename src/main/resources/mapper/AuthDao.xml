@@ -10,7 +10,7 @@
         <result property="createTime" column="create_time"/>
         <result property="updateTime" column="update_time"/>
         <result property="name" column="name"/>
-        <result property="desc" column="desc"/>
+        <result property="dec" column="dec"/>
         <result property="mark" column="mark"/>
         <result property="type" column="type"/>
         <result property="subject" column="subject"/>

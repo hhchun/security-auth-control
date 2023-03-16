@@ -26,7 +26,7 @@ public class AuthControlFilterInvocationSecurityMetadataSource implements Filter
         if (CollectionUtils.isEmpty(auths)) {
             throw new AccessDeniedException("[" + request.getRequestURI() + "]" + "没有配置访问权限");
         }
-        return SecurityConfig.createList(auths.get(0));
+        return SecurityConfig.createList(auths.toArray(new String[0]));
     }
 
     @Override
