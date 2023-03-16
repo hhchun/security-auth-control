@@ -1,6 +1,0 @@
-spring:
-  datasource:
-    druid:
-      url: jdbc:mysql://127.0.0.1/authcontrol?useAffectedRows=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai&characterEncoding=utf-8
-      username: root
-      password: 123456
