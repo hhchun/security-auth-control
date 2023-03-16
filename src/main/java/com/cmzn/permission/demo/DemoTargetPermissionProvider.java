@@ -1,6 +1,8 @@
 package com.cmzn.permission.demo;
 
 import com.cmzn.permission.security.AbstractTargetPermissionProvider;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.config.core.GrantedAuthorityDefaults;
 import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
 
@@ -12,6 +14,8 @@ import java.util.List;
 public class DemoTargetPermissionProvider extends AbstractTargetPermissionProvider {
 
     private final AntPathMatcher antPathMatcher = new AntPathMatcher();
+    @Autowired
+    protected GrantedAuthorityDefaults defaults;
 
     @Override
     public List<String> getPermissions(HttpServletRequest request) {

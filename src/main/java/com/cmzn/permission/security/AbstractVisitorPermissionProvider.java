@@ -12,8 +12,6 @@ import java.util.List;
  * 请求访问者的权限提供处理器
  */
 public abstract class AbstractVisitorPermissionProvider implements PermissionProvider {
-    @Autowired
-    protected GrantedAuthorityDefaults defaults;
 
     @Override
     public List<String> getPermissions(HttpServletRequest request) {
@@ -35,7 +33,9 @@ public abstract class AbstractVisitorPermissionProvider implements PermissionPro
      * @param request
      * @return
      */
-    public abstract List<String> getDefaultPermissions(HttpServletRequest request);
+    public List<String> getDefaultPermissions(HttpServletRequest request){
+        return new ArrayList<>();
+    }
 
     /**
      * 拥有的权限
