@@ -1,5 +1,6 @@
 package com.cmzn.authcontrol.service.impl;
 
+import com.cmzn.authcontrol.dao.UserDao;
 import org.springframework.stereotype.Service;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -8,7 +9,6 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import  com.cmzn.authcontrol.common.utils.PageResult;
 import com.cmzn.authcontrol.common.utils.Query;
 
-import com.cmzn.authcontrol.mapper.UserDao;
 import com.cmzn.authcontrol.entity.domain.UserEntity;
 import com.cmzn.authcontrol.service.UserService;
 
