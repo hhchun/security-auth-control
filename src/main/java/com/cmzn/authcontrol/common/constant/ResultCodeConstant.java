@@ -5,7 +5,7 @@ public enum ResultCodeConstant {
     SUCCESS(200, "成功"),
     ERROR(500, "系统错误"),
     FAIL(501, "失败"),
-    PERMISSION(403, "无访问权限或token无效,请重新登录");
+    AUTH(403, "无访问权限或token无效,请重新登录");
 
 
     ResultCodeConstant(Integer code, String message) {

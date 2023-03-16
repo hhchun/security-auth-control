@@ -24,15 +24,15 @@ public class SecurityExceptionControllerAdvice {
     public R<?> accessDeniedExceptionHandler(AccessDeniedException e, HttpServletRequest request) {
         log.info(e.getMessage());
         log.info("请求路径：{}", request.getRequestURI());
-        log.info(ResultCodeConstant.PERMISSION.getMessage());
-        return R.error(ResultCodeConstant.PERMISSION.getCode(), ResultCodeConstant.PERMISSION.getMessage());
+        log.info(ResultCodeConstant.AUTH.getMessage());
+        return R.error(ResultCodeConstant.AUTH.getCode(), ResultCodeConstant.AUTH.getMessage());
     }
 
     @ExceptionHandler(value = AuthenticationException.class)
     public R<?> authenticationExceptionHandler(AuthenticationException e, HttpServletRequest request) {
         log.info(e.getMessage());
         log.info("请求路径：{}", request.getRequestURI());
-        log.info(ResultCodeConstant.PERMISSION.getMessage());
-        return R.error(ResultCodeConstant.PERMISSION.getCode(), ResultCodeConstant.PERMISSION.getMessage());
+        log.info(ResultCodeConstant.AUTH.getMessage());
+        return R.error(ResultCodeConstant.AUTH.getCode(), ResultCodeConstant.AUTH.getMessage());
     }
 }

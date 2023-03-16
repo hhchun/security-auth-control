@@ -1,5 +1,6 @@
 package com.cmzn.authcontrol.security;
 
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.access.SecurityConfig;
 import org.springframework.security.web.FilterInvocation;
@@ -14,17 +15,16 @@ public class AuthControlFilterInvocationSecurityMetadataSource implements Filter
 
     private AuthProvider authProvider;
 
-
     public AuthControlFilterInvocationSecurityMetadataSource(AuthProvider authProvider) {
         this.authProvider = authProvider;
     }
 
     @Override
-    public Collection<ConfigAttribute> getAttributes(Object object) throws IllegalArgumentException {
+    public Collection<ConfigAttribute> getAttributes(Object object) {
         HttpServletRequest request = ((FilterInvocation) object).getRequest();
         List<String> auths = authProvider.getAuths(request);
         if (CollectionUtils.isEmpty(auths)) {
-            throw new IllegalArgumentException("[" + request.getRequestURI() + "]" + "没有配置访问权限");
+            throw new AccessDeniedException("[" + request.getRequestURI() + "]" + "没有配置访问权限");
         }
         return SecurityConfig.createList(auths.get(0));
     }
