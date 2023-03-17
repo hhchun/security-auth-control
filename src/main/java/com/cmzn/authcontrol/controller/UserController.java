@@ -3,12 +3,9 @@ package com.cmzn.authcontrol.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import com.cmzn.authcontrol.entity.dto.LoginDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.cmzn.authcontrol.entity.domain.UserEntity;
 import com.cmzn.authcontrol.service.UserService;
@@ -24,15 +21,22 @@ import com.cmzn.authcontrol.common.utils.R;
  * @date 2023-03-16 16:28:54
  */
 @RestController
-@RequestMapping("/user" )
+@RequestMapping("/user")
 public class UserController {
     @Autowired
     private UserService userService;
 
+    @PostMapping("/login")
+    public R<?> login(@RequestBody LoginDto loginDto) {
+        String token = userService.login(loginDto);
+
+        return R.success(token);
+    }
+
     /**
      * 列表
      */
-    @RequestMapping("/list" )
+    @RequestMapping("/list")
     public R<PageResult<UserEntity>> list(@RequestParam Map<String, Object> params) {
         PageResult<UserEntity> page = userService.queryPage(params);
 
@@ -43,9 +47,9 @@ public class UserController {
     /**
      * 信息
      */
-    @RequestMapping("/info/{id}" )
-    public R<UserEntity> info(@PathVariable("id" ) Long id) {
-            UserEntity user = userService.getById(id);
+    @RequestMapping("/info/{id}")
+    public R<UserEntity> info(@PathVariable("id") Long id) {
+        UserEntity user = userService.getById(id);
 
         return R.success(user);
     }
@@ -53,9 +57,9 @@ public class UserController {
     /**
      * 保存
      */
-    @RequestMapping("/save" )
+    @RequestMapping("/save")
     public R<?> save(@RequestBody UserEntity user) {
-            userService.save(user);
+        userService.save(user);
 
         return R.success();
     }
@@ -63,9 +67,9 @@ public class UserController {
     /**
      * 修改
      */
-    @RequestMapping("/update" )
+    @RequestMapping("/update")
     public R<?> update(@RequestBody UserEntity user) {
-            userService.updateById(user);
+        userService.updateById(user);
 
         return R.success();
     }
@@ -73,9 +77,9 @@ public class UserController {
     /**
      * 删除
      */
-    @RequestMapping("/delete" )
+    @RequestMapping("/delete")
     public R<?> delete(@RequestBody Long[] ids) {
-            userService.removeByIds(Arrays.asList(ids));
+        userService.removeByIds(Arrays.asList(ids));
 
         return R.success();
     }

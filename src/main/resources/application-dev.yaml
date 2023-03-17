@@ -4,3 +4,11 @@ spring:
       url: jdbc:mysql://127.0.0.1/authcontrol?useAffectedRows=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai&characterEncoding=utf-8
       username: root
       password: 123456
+  redis:
+    redisson:
+      config: |
+         singleServerConfig:
+            timeout: 10000
+            address: redis://192.168.69.12:6379
+         codec: !<org.redisson.codec.JsonJacksonCodec> {}
+#         codec: !<org.redisson.codec.Kryo5Codec> {}

@@ -39,7 +39,8 @@ CREATE TABLE `auth` (
 
 insert  into `auth`(`id`,`del`,`create_time`,`update_time`,`name`,`des`,`mark`,`type`,`subject`,`status`) values 
 (1,0,'2023-03-16 18:10:53','2023-03-16 18:10:55','查看一个用户','查看一个用户','ckygyh','api','/user/info/**',1),
-(2,0,'2023-03-16 18:12:47','2023-03-16 18:12:46','查看全部用户','查看全部用户','ckqbyh','api','/user/list',1);
+(2,0,'2023-03-16 18:12:47','2023-03-16 18:12:46','查看全部用户','查看全部用户','ckqbyh','api','/user/list',1),
+(3,0,'2023-03-17 12:54:34','2023-03-17 12:54:32','登录','登录','LOGIN','api','/user/login',1);
 
 /*Table structure for table `role` */
 
@@ -62,7 +63,8 @@ CREATE TABLE `role` (
 
 insert  into `role`(`id`,`del`,`create_time`,`update_time`,`name`,`des`,`mark`,`status`) values 
 (1,0,'2023-03-16 18:09:55','2023-03-16 18:09:57','开发','开发','kf',1),
-(2,0,'2023-03-16 18:10:19','2023-03-16 18:10:21','技术经理','技术经理','jsjl',1);
+(2,0,'2023-03-16 18:10:19','2023-03-16 18:10:21','技术经理','技术经理','jsjl',1),
+(3,0,'2023-03-17 10:25:06','2023-03-17 10:25:08','默认','默认','DEF',1);
 
 /*Table structure for table `role_mtm_auth` */
 
@@ -84,7 +86,8 @@ CREATE TABLE `role_mtm_auth` (
 insert  into `role_mtm_auth`(`id`,`del`,`create_time`,`update_time`,`role_id`,`auth_id`) values 
 (1,0,'2023-03-16 18:15:11','2023-03-16 18:15:13',1,1),
 (2,0,'2023-03-16 18:15:29','2023-03-16 18:15:30',2,1),
-(3,0,'2023-03-16 18:15:40','2023-03-16 18:15:41',2,2);
+(3,0,'2023-03-16 18:15:40','2023-03-16 18:15:41',2,2),
+(4,0,'2023-03-17 12:55:15','2023-03-17 12:55:16',3,3);
 
 /*Table structure for table `user` */
 
@@ -126,7 +129,8 @@ CREATE TABLE `user_mtm_role` (
 
 insert  into `user_mtm_role`(`id`,`del`,`create_time`,`update_time`,`user_id`,`role_id`) values 
 (1,0,'2023-03-16 18:16:13','2023-03-16 18:16:15',1,1),
-(2,0,'2023-03-16 18:49:11','2023-03-16 18:49:09',1,2);
+(2,0,'2023-03-16 18:49:11','2023-03-16 18:49:09',1,2),
+(3,0,'2023-03-17 10:26:35','2023-03-17 10:26:29',1,3);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

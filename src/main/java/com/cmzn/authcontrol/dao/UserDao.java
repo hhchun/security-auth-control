@@ -1,8 +1,10 @@
 package com.cmzn.authcontrol.dao;
 
+import com.cmzn.authcontrol.entity.bo.UserBo;
 import com.cmzn.authcontrol.entity.domain.UserEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * 用户
@@ -13,5 +15,6 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface UserDao extends BaseMapper<UserEntity> {
-	
+
+    UserBo getUserContext(@Param("userId") Long userId);
 }

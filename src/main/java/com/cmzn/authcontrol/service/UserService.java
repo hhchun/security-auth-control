@@ -1,8 +1,10 @@
 package com.cmzn.authcontrol.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.cmzn.authcontrol.auth.UserContext;
 import  com.cmzn.authcontrol.common.utils.PageResult;
 import com.cmzn.authcontrol.entity.domain.UserEntity;
+import com.cmzn.authcontrol.entity.dto.LoginDto;
 
 import java.util.Map;
 
@@ -16,5 +18,9 @@ import java.util.Map;
 public interface UserService extends IService<UserEntity> {
 
     PageResult<UserEntity> queryPage(Map<String, Object> params);
+
+    String login(LoginDto loginDto);
+
+    UserContext getUserContext(Long userId);
 }
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.cmzn.authcontrol.mapper.AuthDao">
+<mapper namespace="com.cmzn.authcontrol.dao.AuthDao">
 
 	<!-- 可根据自己的需求，是否要使用 -->
     <resultMap type="com.cmzn.authcontrol.entity.domain.AuthEntity" id="authMap">
@@ -10,12 +10,35 @@
         <result property="createTime" column="create_time"/>
         <result property="updateTime" column="update_time"/>
         <result property="name" column="name"/>
-        <result property="dec" column="dec"/>
+        <result property="des" column="des"/>
         <result property="mark" column="mark"/>
         <result property="type" column="type"/>
         <result property="subject" column="subject"/>
         <result property="status" column="status"/>
     </resultMap>
 
+    <resultMap id="authAndRoleMap" type="com.cmzn.authcontrol.entity.bo.AuthBo">
+        <id property="id" column="aid"/>
+        <result property="name" column="a_name"/>
+        <result property="mark" column="a_mark"/>
+        <result property="type" column="type"/>
+        <result property="subject" column="subject"/>
+        <result property="status" column="a_status"/>
+        <collection property="roles" ofType="com.cmzn.authcontrol.entity.bo.RoleBo">
+            <id property="id" column="rid"/>
+            <result property="name" column="r_name"/>
+            <result property="mark" column="r_mark"/>
+            <result property="status" column="r_status"/>
+        </collection>
+    </resultMap>
 
+    <select id="getAuths" resultMap="authAndRoleMap">
+        SELECT
+            a.`id` AS aid,a.`name` AS a_name, a.`mark` AS a_mark, a.`type`, a.`subject`, a.`status` AS a_status,
+            r.`id` AS rid, r.`name` AS r_name, r.`mark` AS r_mark,r.`status` AS r_status
+        FROM `auth` AS a
+            LEFT JOIN `role_mtm_auth` AS ra ON a.id = ra.auth_id AND ra.del = 0
+            LEFT JOIN `role` AS r ON ra.role_id = r.id AND r.`status` = 1 AND r.del = 0
+        WHERE a.`status` = 1 and a.del = 0
+    </select>
 </mapper>

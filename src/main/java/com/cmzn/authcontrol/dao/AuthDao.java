@@ -1,8 +1,11 @@
 package com.cmzn.authcontrol.dao;
 
+import com.cmzn.authcontrol.entity.bo.AuthBo;
 import com.cmzn.authcontrol.entity.domain.AuthEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * 权限
@@ -13,5 +16,6 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface AuthDao extends BaseMapper<AuthEntity> {
-	
+
+    List<AuthBo> getAuths();
 }
